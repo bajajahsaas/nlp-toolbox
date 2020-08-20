@@ -35,22 +35,34 @@ class FeatureEngineeringRetrieval(FeatureEngineering):
         # spaCy sentence splitter
         doc = NLP(complete_texts)
         corpus = [(sent.text.strip()) for sent in doc.sents]
-    
+
+        logging.info("Total Corpus Size {} docs".format(len(corpus)))
+        doc_to_id_map = {}
+        for id, doc in enumerate(corpus):
+            doc_to_id_map[doc] = id
+
         # para splitter
         # OCR cluster (white spacing) -- see  IbocrTextProcessing.cluster_based_on_DIST in framework.py
-        return corpus
+        return corpus, doc_to_id_map
 
 class Retrieval(ModelTrainer):
-    def train(self, corpus, tokenized_corpus):
+    def train(self, corpus, doc_to_id_map, tokenized_corpus):
         self.corpus = corpus  # list of documents
         self.model = BM25Okapi(tokenized_corpus)
+        self.doc_to_id_map = doc_to_id_map
 
     def predict(self, query, len_results):
         tokenized_query = query.split(" ")
         doc_scores = self.model.get_scores(tokenized_query)
         # array([0.        , 0.93729472, 0.        ])
+        logging.info("Scores available for {} docs".format(len(doc_scores)))
 
-        return self.model.get_top_n(tokenized_query, self.corpus, n=len_results)
+        top_docs = self.model.get_top_n(tokenized_query, self.corpus, n=len_results)
+        top_scores = []
+        for doc in top_docs:
+            top_scores.append(doc_scores[self.doc_to_id_map[doc]])
+        
+        return top_docs, top_scores
 
     def analyze_result(self, results):
         pass

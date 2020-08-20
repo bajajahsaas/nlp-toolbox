@@ -6,7 +6,9 @@ import re
 import os
 from framework import Task, ModelTrainer, FeatureEngineering, Evaluation, DataCuration
 from rank_bm25 import BM25Okapi
-
+import spacy
+import en_core_web_sm
+NLP = en_core_web_sm.load(disable=["tagger", "ner"])
 
 class TaskRetrieval(Task):
     def __init__(self, config):
@@ -26,9 +28,14 @@ class FeatureEngineeringRetrieval(FeatureEngineering):
         # self.data[filename] -> Parsed OCR object
         # self.data.texts[filename] --> single string
         complete_texts = self.data.texts[filename]
-        corpus = complete_texts.split("\n")
-        # Better ideas to split
-        # spaCy -> sentence splitter
+
+        # simple splitting by newline
+        # corpus = complete_texts.split("\n")
+    
+        # spaCy sentence splitter
+        doc = NLP(complete_texts)
+        corpus = [(sent.text.strip()) for sent in doc.sents]
+    
         # para splitter
         # OCR cluster (white spacing) -- see  IbocrTextProcessing.cluster_based_on_DIST in framework.py
         return corpus

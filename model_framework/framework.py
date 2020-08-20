@@ -141,6 +141,8 @@ class IbocrTextProcessing():
     def process_IBOCR_to_txt(all_data_dirs, dataset_config):
         #ToDo: check reading from ib, and for ibdoc
         texts = {}
+        token_indices_per_page = {}
+
         for data_dir in all_data_dirs:
             files = os.listdir(data_dir)
             logging.info("Processing {} IBOCR files to txt".format(len(files)))
@@ -150,14 +152,21 @@ class IbocrTextProcessing():
                 f = open(fpath)
                 file = json.load(f)
                 all_texts = ""
+                token_indices = []
                 for page in file:
+                    pages_info = [] # {start index, end index}
+                    pages_info.append(len(all_texts)) # start index
                     this_texts = page['text']
                     all_texts = all_texts + this_texts + "\n"
+                    pages_info.append(len(all_texts) - 1) # end index
+                    token_indices.append(pages_info)
+
                 if dataset_config.get('identifier'):
                         identifier = dataset_config.get('identifier')(fname)
                 texts.update({identifier: all_texts})
+                token_indices_per_page.update({identifier: token_indices})
         
-        return texts
+        return texts, token_indices_per_page
 
     @staticmethod
     def cluster_based_on_DIST(lines, threshold):
@@ -238,7 +247,7 @@ class DataCuration():
             self._load_goldens(goldens_paths, goldens_config)
 
         if dataset_config['convert2txt']:
-            self.texts = IbocrTextProcessing.process_IBOCR_to_txt(dataset_paths, dataset_config)
+            self.texts, self.token_indices_per_page = IbocrTextProcessing.process_IBOCR_to_txt(dataset_paths, dataset_config)
 
     def get_file_objects(self, dataset_path, read_from_local):
         file_objects = []

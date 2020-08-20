@@ -28,7 +28,12 @@ class FeatureEngineeringRetrieval(FeatureEngineering):
         # self.data[filename] -> Parsed OCR object
         # self.data.texts[filename] --> single string
         complete_texts = self.data.texts[filename]
+       
+        # format: [[s1, e1], [s2, e2], .... [sn, en]]
+        # for each page, store the index of start and ending token in complete_texts
+        token_indices_per_page = self.data.token_indices_per_page[filename]
 
+        logging.info('Total pages in file: {}'.format(len(token_indices_per_page)))
         # simple splitting by newline
         # corpus = complete_texts.split("\n")
     

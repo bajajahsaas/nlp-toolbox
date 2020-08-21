@@ -103,12 +103,15 @@ class MultiLayerPerceptron(ModelTrainer):
             logging.info("Running predictions for file: {}".format(dataset_file))
             try:
                 ibdoc = self.data_args['dataset'].dataset[dataset_file].get_joined_page()[0] # 20, 54, 70
+                logging.info("Getting features to predict")
                 featurizer = IBDOCFeaturizer(ibdoc)
                 fvs = featurizer.get_feature_vectors(self.data_args['data_config'])
         #         print(ibdoc.get_text())
         #         print('=================================')
+                logging.info("Inferring trained model for prediction")
                 predictions = self.model.predict(fvs)
                 predictions = predictions.tolist()
+                logging.info("Printing predictions, concatenating outputs")
                 sequences = [[]]
                 for i, classification in enumerate(predictions):
                     if classification[0] > threshold:

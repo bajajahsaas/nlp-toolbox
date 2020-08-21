@@ -138,34 +138,27 @@ class StringProcessing():
 
 class IbocrTextProcessing():
     @staticmethod
-    def process_IBOCR_to_txt(all_data_dirs, dataset_config):
-        #ToDo: check reading from ib, and for ibdoc
+    def process_IBOCR_to_txt(fnames, files, dataset_config):
+        logging.info("Converting IBOCR/IBDOC to raw texts")
         texts = {}
         token_indices_per_page = {}
 
-        for data_dir in all_data_dirs:
-            files = os.listdir(data_dir)
-            logging.info("Processing {} IBOCR files to txt".format(len(files)))
+        for fname, f in zip(fnames, files):
+            file = json.loads(f)
+            all_texts = ""
+            token_indices = []
+            for page in file:
+                pages_info = [] # {start index, end index}
+                pages_info.append(len(all_texts)) # start index
+                this_texts = page['text']
+                all_texts = all_texts + this_texts + "\n"
+                pages_info.append(len(all_texts) - 1) # end index
+                token_indices.append(pages_info)
+            if dataset_config.get('identifier'):
+                    identifier = dataset_config.get('identifier')(fname)
+            texts.update({identifier: all_texts})
+            token_indices_per_page.update({identifier: token_indices})
 
-            for fname in files:
-                fpath = os.path.join(data_dir, fname)
-                f = open(fpath)
-                file = json.load(f)
-                all_texts = ""
-                token_indices = []
-                for page in file:
-                    pages_info = [] # {start index, end index}
-                    pages_info.append(len(all_texts)) # start index
-                    this_texts = page['text']
-                    all_texts = all_texts + this_texts + "\n"
-                    pages_info.append(len(all_texts) - 1) # end index
-                    token_indices.append(pages_info)
-
-                if dataset_config.get('identifier'):
-                        identifier = dataset_config.get('identifier')(fname)
-                texts.update({identifier: all_texts})
-                token_indices_per_page.update({identifier: token_indices})
-        
         return texts, token_indices_per_page
 
     @staticmethod
@@ -246,9 +239,6 @@ class DataCuration():
 
             self._load_goldens(goldens_paths, goldens_config)
 
-        if dataset_config['convert2txt']:
-            self.texts, self.token_indices_per_page = IbocrTextProcessing.process_IBOCR_to_txt(dataset_paths, dataset_config)
-
     def get_file_objects(self, dataset_path, read_from_local):
         file_objects = []
         if read_from_local is False:
@@ -301,15 +291,24 @@ class DataCuration():
             file_objects.extend(this_file_objects)
             logging.info("{} files loaded".format(len(files)))
 
+        new_files = []
+        new_file_objs = []
+
         for file, file_object in zip(files, file_objects):
             content = None
             identifier = file
             if dataset_config.get('file_type') in ['ibdoc', 'ibocr']:
                 ibocr, err = ParsedIBOCRBuilder.load_from_str(os.path.join(dataset_path, file), file_object)
-                content = ibocr.as_parsed_ibocr()
-                if dataset_config.get('identifier'):
-                    identifier = dataset_config.get('identifier')(file)
-                    self.dataset.update({identifier: content})
+                if err is None:
+                    new_files.append(file)
+                    new_file_objs.append(file_object)
+                    content = ibocr.as_parsed_ibocr()
+                    if dataset_config.get('identifier'):
+                        identifier = dataset_config.get('identifier')(file)
+                        self.dataset.update({identifier: content})
+
+        if dataset_config['convert2txt']:
+            self.texts, self.token_indices_per_page = IbocrTextProcessing.process_IBOCR_to_txt(new_files, new_file_objs, dataset_config)
 
     def generate_candidates_phrases(self, processing_config):
         self.candidates = IbocrTextProcessing.process_IBOCR_to_candidate_phrases(self.datadir, self.dataset_config, processing_config)

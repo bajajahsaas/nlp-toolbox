@@ -1,0 +1,65 @@
+Using TensorFlow backend.
+INFO:root:Loading dataset from /Users/ahsaasbajaj/Documents/Data/CARTA/Annotated Samples/out/s1_process_files
+INFO:root:4 files loaded
+INFO:root:Loading goldens from /Users/ahsaasbajaj/Documents/Data/CARTA/Annotated Samples/golden/output.csv
+INFO:root:Total files Goldens: (4, 9)
+INFO:root:Total files found in the source with unique index: (4, 9)
+INFO:root:Processing 4 IBOCR files to txt
+INFO:root: Total number of Files: 4
+INFO:root:File name: annotated_AOI_4.pdf
+convert squad examples to features: 100%|████████████████████████████████████████████████████| 11/11 [00:32<00:00,  2.93s/it]
+add example index and unique id: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:00<00:00, 11881.88it/s]
+Who is incorporating the company? : Secretary of State of Delaware
+How many shares are being created? : 22,851,680
+What are the number of authorized shares? : 22,851,680
+What are the Preferred stocks? : Series A Preferred Stock and Series A-1 Preferred Stock
+What are the Non-cumulative dividends? : preferential dividends arrears amount" or any "preferential rights amount,"
+What are the Common stocks? : 16,000,000 shares of Common Stock, par value $0.0001 per share
+What is the Dividend rate per annum per preferred share type? : $0.1044 per annum for each share of Series A Preferred Stock and SO.1856
+What is the original issue price per share? : $0.795 per share
+What is the seniority of preferred share? : $0.0001 per share
+What is the liquidation preference? : Liquidation with no multiplier, pari pasu (equal seniority across preferred stock
+What is the conversion price : Conversion Price for the applicable series of Preferred Stock at the time in effect
+INFO:root:File name: annotated_AOI_2.pdf
+convert squad examples to features: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:40<00:00,  3.67s/it]
+add example index and unique id: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:00<00:00, 8411.55it/s]
+Who is incorporating the company? : Gary W. Conkright
+How many shares are being created? : 15,442,630
+What are the number of authorized shares? : 5363076 8100
+What are the Preferred stocks? : 11,185,930 shares of Preferred Stock, $0.001 par value per share
+What are the Non-cumulative dividends? : Such dividends shall not be cumulative
+What are the Common stocks? : 15,442,630 shares of Common Stock, $0.001 par |value per share
+What is the Dividend rate per annum per preferred share type? : $0.001
+What is the original issue price per share? : the applicable Preferred Stock
+What is the seniority of preferred share? : $0.001
+What is the liquidation preference? : Original Issue Price
+What is the conversion price : the applicable Preferred Stock Conversion Price then in effect
+INFO:root:File name: annotated_AOI_5.pdf
+convert squad examples to features: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:53<00:00,  4.83s/it]
+add example index and unique id: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:00<00:00, 11940.31it/s]
+Who is incorporating the company? : Tom Wright
+How many shares are being created? : 18,527,000
+What are the number of authorized shares? : 18,527,000
+What are the Preferred stocks? : 9,744,530 shares of Preferred Stock, $0.0001 par value per share
+What are the Non-cumulative dividends? : on a pari passu basis among each other
+What are the Common stocks? : additional shares ofCommon Stock
+What is the Dividend rate per annum per preferred share type? : $0.0001
+What is the original issue price per share? : Series Preferred Liquidation Amount
+What is the seniority of preferred share? : $0.0001
+What is the liquidation preference? : conversion rights or anti-dilution rights of the Series Seed Preferred Stock
+What is the conversion price : the applicable Conversion Price then in effect
+INFO:root:File name: annotated_AOI_3.pdf
+convert squad examples to features: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:52<00:00,  4.79s/it]
+add example index and unique id: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:00<00:00, 13365.40it/s]
+Who is incorporating the company? : Sooinn Lee
+How many shares are being created? : 13,000,000
+What are the number of authorized shares? : Authorized number of shares / share class 1 A. COMMON STOCK
+What are the Preferred stocks? : 5,510,000 shares of Preferred Stock, $0.00001 par value per share
+What are the Non-cumulative dividends? : similar recapitalization
+What are the Common stocks? : 13,000,000 shares of Common Stock, $0.00001 par value per share
+What is the Dividend rate per annum per preferred share type? : $0.00001
+What is the original issue price per share? : $0.33
+What is the seniority of preferred share? : 5,510,000 shares of Preferred Stock, $0.00001
+What is the liquidation preference? : Series 3
+What is the conversion price : the applicable Conversion Price then in effect
+INFO:root:Total time for 4 files and 11 queries each is 42487.44477581978 seconds

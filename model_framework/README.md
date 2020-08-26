@@ -45,13 +45,13 @@ This repository aims to provide a unified structure to build custom ML models (p
 - IBOCR Processing - parse, cluster documents
 - IBDOC Featurizer - get token embedding, get surrounding context, etc
 - Evaluation - calculate, print metrics like Recall, Precision, F-1
-- Model Trainer (over-ridden in Models)
-- Feature Engineering (over-ridden in Model)
+- Model Trainer (over-ridden in [models](#models-supported))
+- Feature Engineering (over-ridden in [models](#models-supported))
 
 ### Steps to add a new model or use-case
 
-- Create a new model file (.py)
+- Create a new model file (.py) - (see [examples](#models-supported))
 - Create classes over-ridding ModelTrainer and FeatureEngineering in ([framework.py](framework.py))
-- Specify how to prepare, label, split data in FeatureEngineering
+- Specify how to prepare, label, split data in FeatureEngineering 
 - Specify how to initialize, train, evaluate, analyze model in ModelTrainer
 - Create a jupyter notebook and use this model along with other framework modules like in [sample use-cases](#use-cases-supported)

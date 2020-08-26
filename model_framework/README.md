@@ -5,12 +5,6 @@ This repository aims to provide a unified structure to build custom ML models (p
 - [ ] [JIRA Epic](https://instabase.atlassian.net/browse/INSIGHTS-1427)
 - [ ] [Slides](https://docs.google.com/presentation/d/10mXA7K5sa_nAkqx2onsIfrH3TPj2Ni4LfCOxDhN5XBI/edit?usp=sharing)
 
-### To Run
-
-- Install dependencies as in [requirements.txt](requirements.txt)
-- Change sdk and local build paths in [framework.py](framework.py)
-- Change Access token at the start of each .ipynb file
-- Follow markdown comments in the notebook files to download models and data
 
 ### Use-Cases Supported
 
@@ -38,7 +32,7 @@ This repository aims to provide a unified structure to build custom ML models (p
 - Utilities for BERT ([bert_utils.py](bert_utils.py))
 - Text Preprocessing ([preprocessing.py](preprocessing.py), [rule_features.py](rule_features.py))
 
-### Component of Core Framework
+### Components of Core Framework
 
 - Data Curation - load, manipulate data and goldens, split data etc
 - String Processing tools - cleaning, filtering text, etc
@@ -48,7 +42,14 @@ This repository aims to provide a unified structure to build custom ML models (p
 - Model Trainer (over-ridden in [models](#models-supported))
 - Feature Engineering (over-ridden in [models](#models-supported))
 
-### Steps to add a new model or use-case
+## To Run
+
+- Install dependencies as in [requirements.txt](requirements.txt)
+- Change sdk and local build paths in [framework.py](framework.py)
+- Change Access token at the start of each .ipynb file
+- Follow markdown comments in the notebook files to download models and data
+
+## Steps to add a new model or use-case
 
 - Create a new model file (.py) - (see [examples](#models-supported))
 - Create classes over-ridding ModelTrainer and FeatureEngineering in ([framework.py](framework.py))

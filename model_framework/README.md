@@ -14,9 +14,9 @@
 ### Use-Cases Supported
 
 - Evaluate Refiner Results ([run_refiner.ipynb](run_refiner.ipynb))
-- Infer BERT for name extraction (*run_NER.ipynb*)
-- Finetune BERT for name extraction (*train_NER.ipynb*)
-- Company Name extraction using Neural Nets (*run_cmp_name.ipynb*)
-- Question Answering using BERT (*run_QA.ipynb*)
-- Question Answerring Demo (*run_QA_demo.ipynb*)
-- Document Retrieval (*run_retrieval_demo.ipynb*)
+- Infer BERT for name extraction ([run_NER.ipynb](run_NER.ipynb))
+- Finetune BERT for name extraction ([train_NER.ipynb](run_NER.ipynb))
+- Company Name extraction using Neural Nets ([run_cmp_name.ipynb](run_NER.ipynb))
+- Question Answering using BERT ([run_QA.ipynb](run_NER.ipynb))
+- Question Answerring Demo ([run_QA_demo.ipynb](run_NER.ipynb))
+- Document Retrieval ([run_retrieval_demo.ipynb](run_NER.ipynb))

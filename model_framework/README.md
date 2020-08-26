@@ -22,20 +22,36 @@ This repository aims to provide a unified structure to build custom ML models (p
 - Question Answerring Demo ([run_QA_demo.ipynb](run_QA_demo.ipynb))
 - Document Retrieval ([run_retrieval_demo.ipynb](run_retrieval_demo.ipynb))
 
-### Models
+### Models Supported
 
-- Evaluation of Refiner Results ([refiner.py](refiner.py))
-- BERT for sequence classification ([bert_ner.py](bert_ner.py))
+- Analyzing Refiner Results ([refiner.py](refiner.py))
+- Sequence Classification using BERT ([bert_ner.py](bert_ner.py))
 - Question Answering using BERT ([bert_qa.py](bert_qa.py))
 - Keras Neural Nets ([MultiLayerPerceptron.py](MultiLayerPerceptron.py))
 - Document Retrieval ([retrieval.py](retrieval.py))
 
 ### Backbone framework code
 
-- Framework ([framework.py](framework.py)
+- Core Framework ([framework.py](framework.py))
 - BERT finetuning using huggingface ([bert_finetuning.py](bert_finetuning.py))
 - BERT inference using huggingface ([infer_bert_classifier.py](infer_bert_classifier.py), [infer_bert_qa.py](infer_bert_qa.py))
 - Utilities for BERT ([bert_utils.py](bert_utils.py))
 - Text Preprocessing ([preprocessing.py](preprocessing.py), [rule_features.py](rule_features.py))
+
+### Component of Core Framework
+
+- Data Curation - load, manipulate data and goldens, split data etc
+- String Processing tools - cleaning, filtering text, etc
+- IBOCR Processing - parse, cluster documents
+- IBDOC Featurizer - get token embedding, get surrounding context, etc
+- Evaluation - calculate, print metrics like Recall, Precision, F-1
+- Model Trainer (over-ridden in Models)
+- Feature Engineering (over-ridden in Model)
+
 ### Steps to add a new model or use-case
 
+- Create a new model file (.py)
+- Create classes over-ridding ModelTrainer and FeatureEngineering in ([framework.py](framework.py))
+- Specify how to prepare, label, split data in FeatureEngineering
+- Specify how to initialize, train, evaluate, analyze model in ModelTrainer
+- Create a jupyter notebook and use this model along with other framework modules like in sample use-cases

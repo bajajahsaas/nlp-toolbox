@@ -13,7 +13,7 @@
 
 ### Use-Cases Supported
 
-- Evaluate Refiner Results (*run_refiner.ipynb*)
+- Evaluate Refiner Results ([run_refiner.ipynb](run_refiner.ipynb))
 - Infer BERT for name extraction (*run_NER.ipynb*)
 - Finetune BERT for name extraction (*train_NER.ipynb*)
 - Company Name extraction using Neural Nets (*run_cmp_name.ipynb*)

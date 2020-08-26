@@ -6,8 +6,8 @@
 
 ### To Run
 
-- Download dependencies as in Requirements.txt
-- Change sdk paths in framework.py
+- Download dependencies as in [requirements.txt](requirements.txt)
+- Change sdk and local build paths in framework.py
 - Change Access tokens at start of each .ipynb file
 
 
@@ -15,8 +15,8 @@
 
 - Evaluate Refiner Results ([run_refiner.ipynb](run_refiner.ipynb))
 - Infer BERT for name extraction ([run_NER.ipynb](run_NER.ipynb))
-- Finetune BERT for name extraction ([train_NER.ipynb](run_NER.ipynb))
-- Company Name extraction using Neural Nets ([run_cmp_name.ipynb](run_NER.ipynb))
-- Question Answering using BERT ([run_QA.ipynb](run_NER.ipynb))
-- Question Answerring Demo ([run_QA_demo.ipynb](run_NER.ipynb))
-- Document Retrieval ([run_retrieval_demo.ipynb](run_NER.ipynb))
+- Finetune BERT for name extraction ([train_NER.ipynb](train_NER.ipynb))
+- Company Name extraction using Neural Nets ([run_cmp_name.ipynb](run_cmp_name.ipynb))
+- Question Answering using BERT ([run_QA.ipynb](run_QA.ipynb))
+- Question Answerring Demo ([run_QA_demo.ipynb](run_QA_demo.ipynb))
+- Document Retrieval ([run_retrieval_demo.ipynb](run_retrieval_demo.ipynb))

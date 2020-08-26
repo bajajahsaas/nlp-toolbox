@@ -54,4 +54,4 @@ This repository aims to provide a unified structure to build custom ML models (p
 - Create classes over-ridding ModelTrainer and FeatureEngineering in ([framework.py](framework.py))
 - Specify how to prepare, label, split data in FeatureEngineering
 - Specify how to initialize, train, evaluate, analyze model in ModelTrainer
-- Create a jupyter notebook and use this model along with other framework modules like in sample use-cases
+- Create a jupyter notebook and use this model along with other framework modules like in [sample use-cases](#use-cases-supported)

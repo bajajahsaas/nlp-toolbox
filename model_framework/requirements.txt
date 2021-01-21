@@ -192,7 +192,7 @@ pyOpenSSL==19.0.0
 pyotp==2.2.6
 pyparsing==2.4.5
 pyrsistent==0.15.5
-pysaml2==5.0.0
+pysaml2==6.5.0
 PySocks==1.7.1
 pytest==3.8.1
 python-dateutil==2.8.1

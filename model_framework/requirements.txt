@@ -217,7 +217,7 @@ requests-mock==1.4.0
 requests-oauthlib==1.1.0
 responses==0.10.6
 rope==0.17.0
-rsa==4.0
+rsa==4.1
 s3transfer==0.2.1
 sacremoses==0.0.43
 scikit-image==0.16.2

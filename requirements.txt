@@ -161,7 +161,7 @@ pdfkit==0.6.1
 pexpect==4.7.0
 pickleshare==0.7.5
 pika==0.13.0
-pikepdf==1.10.0
+pikepdf==2.10.0
 Pillow==6.2.0
 pip-tools==5.2.0
 plac==0.9.6

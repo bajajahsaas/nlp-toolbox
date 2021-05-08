@@ -58,7 +58,7 @@ en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_
 en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz
 en-coref-md @ https://github.com/huggingface/neuralcoref-models/releases/download/en_coref_md-3.0.0/en_coref_md-3.0.0.tar.gz
 entrypoints==0.3
-eventlet==0.25.1
+eventlet==0.31.0
 ExtractMsg==0.3
 filelock==3.0.12
 flake8==3.5.0

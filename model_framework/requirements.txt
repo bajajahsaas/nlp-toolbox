@@ -185,7 +185,7 @@ pycryptodomex==3.4.3
 pyflakes==1.6.0
 PyGithub==1.43.7
 Pygments==2.4.2
-PyJWT==1.7.1
+PyJWT==2.4.0
 pylint==2.5.3
 PyMySQL==0.8.0
 pyOpenSSL==19.0.0

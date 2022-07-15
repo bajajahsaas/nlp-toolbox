@@ -46,7 +46,7 @@ defusedxml==0.6.0
 Deprecated==1.2.7
 dill==0.2.9
 distlib==0.3.0
-distributed==1.19.0
+distributed==2021.10.0
 dnspython==1.16.0
 docker==4.1.0
 docutils==0.15.2
